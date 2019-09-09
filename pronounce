@@ -25,7 +25,7 @@ function main {
 		url=$(get_url $word $number)
 		download $url ${word}-${number}.wav
 	fi
-	run_external_program ffplay ${word}-${number}.wav
+	run_external_program afplay ${word}-${number}.wav
 }
 
 function check_cache_folder {
@@ -52,7 +52,7 @@ function get_url {
 function download {
 	url=$1
 	dest=$2
-	run_external_program wget "$url" -O $dest
+	run_external_program /usr/local/bin/wget "$url" -O $dest
 	if [ -s $dest ]; then
 		echo "Downloaded."
 	else
